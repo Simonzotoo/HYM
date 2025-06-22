@@ -1,45 +1,56 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 <head>
-  <meta charset='UTF-8'>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-  <title>About HYM | Hannah Yawson Ministry </title>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About HYM | Hannah Yawson Ministry</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
   <style>
     :root {
-      --primary:#4B0082; /* Deep purple */
-      --secondary: #8A2BE2; /* Violet */
-      --accent: #FFD700; /* Gold */
+      --primary: #4B0082;
+      --secondary: #8A2BE2;
+      --accent: #FFD700;
       --light: #F9F9F9;
       --text: #333333;
     }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Raleway', sans-serif;
-      margin: 0;
       background: var(--light);
       color: var(--text);
       line-height: 1.6;
       font-size: 18px;
     }
+
     header {
       background: var(--primary);
       color: white;
-      padding: 1.2em 0;
+      padding: 1.2rem 0;
     }
+
     .header-container {
       max-width: 1200px;
-      margin: 0 auto;
+      margin: auto;
       padding: 0 20px;
     }
+
     .header-bar {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 20px;
       margin-bottom: 0.8rem;
+      text-align: center;
     }
+
     .logo {
       width: 50px;
       height: 50px;
@@ -47,62 +58,63 @@
       object-fit: cover;
       border: 2px solid var(--accent);
     }
+
     h1, h2, h3 {
       font-family: 'Playfair Display', serif;
       font-weight: 600;
-      margin: 0;
     }
+
     h1 {
       font-size: 1.8rem;
     }
-    h2 {
-      font-size: 2rem;
-    }
+
     nav {
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 1rem;
       padding: 0.5rem 0;
     }
+
     nav a {
       color: white;
       text-decoration: none;
       font-weight: 600;
       font-size: 0.85rem;
-      letter-spacing: 0.5px;
       padding: 0.3rem 0.8rem;
       border-radius: 20px;
-      transition: all 0.3s;
+      transition: 0.3s;
     }
+
     nav a:hover {
-      color: var(--accent);
       background: rgba(255,255,255,0.1);
+      color: var(--accent);
     }
+
     .hero-about {
       background: linear-gradient(rgba(75, 0, 130, 0.8), rgba(75, 0, 130, 0.8)), 
-                  url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-      background-size: cover;
-      background-position: center;
+        url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
       color: white;
       text-align: center;
       padding: 3rem 1rem;
-      margin-bottom: 2rem;
     }
+
     .hero-about h2 {
       font-size: 2rem;
       margin-bottom: 0.8rem;
     }
+
     .hero-about p {
       max-width: 600px;
       margin: 0 auto;
-      font-size: 1rem;
     }
+
     .about-container {
       max-width: 1000px;
-      margin: 0 auto 3rem;
-      padding: 0 1.5rem;
+      margin: auto;
+      padding: 2rem 1.5rem;
     }
+
     .about-intro {
       display: flex;
       flex-wrap: wrap;
@@ -110,122 +122,133 @@
       gap: 2rem;
       margin-bottom: 3rem;
     }
+
     .about-img {
       flex: 1;
       min-width: 280px;
     }
+
     .about-img img {
       width: 100%;
-      max-width: 400px;
       border-radius: 8px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     }
+
     .about-text {
       flex: 1;
       min-width: 280px;
     }
+
     .about-text h2 {
       color: var(--primary);
       margin-bottom: 1rem;
     }
+
     .about-text p {
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
     }
+
     .signature {
-      font-family: 'Playfair Display', serif;
       font-style: italic;
       color: var(--secondary);
+      font-family: 'Playfair Display', serif;
     }
+
     .card-section {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
-      margin-top: 2rem;
     }
+
     .about-card {
       background: white;
       padding: 1.5rem;
       border-radius: 8px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
       border-top: 3px solid var(--accent);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+      text-align: center;
     }
-    .about-card h3 {
-      color: var(--primary);
-      font-size: 1.3rem;
-      margin-bottom: 0.8rem;
-    }
+
     .icon {
       font-size: 2rem;
       color: var(--accent);
       margin-bottom: 0.8rem;
     }
+
+    .about-card h3 {
+      color: var(--primary);
+      margin-bottom: 0.6rem;
+    }
+
     .cta-section {
       max-width: 500px;
-      padding: 1.5rem;
       margin: 3rem auto;
-      text-align: center;
       background: white;
+      padding: 1.5rem;
       border-radius: 8px;
+      text-align: center;
       box-shadow: 0 3px 10px rgba(0,0,0,0.05);
     }
+
     .cta-section h2 {
-      font-size: 1.5rem;
       color: var(--primary);
       margin-bottom: 1rem;
     }
+
     .btn {
       display: inline-block;
       background: var(--accent);
       color: var(--primary);
       padding: 0.7rem 1.8rem;
-      font-size: 0.9rem;
       font-weight: 600;
       border-radius: 50px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s;
       text-decoration: none;
+      transition: 0.3s;
     }
+
     .btn:hover {
-      transform: translateY(-3px);
+      transform: translateY(-2px);
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
+
     footer {
       background: var(--primary);
       color: white;
       padding: 1.5rem 1rem;
       text-align: center;
     }
+
     .social-links {
       margin-bottom: 1rem;
     }
+
     .social-links a {
       color: white;
       font-size: 1.2rem;
-      margin: 0 8px;
-      transition: all 0.3s;
+      margin: 0 10px;
+      transition: 0.3s;
     }
+
     .social-links a:hover {
       color: var(--accent);
     }
+
     footer p {
       font-size: 0.9rem;
-      margin: 0;
     }
 
     @media (max-width: 768px) {
       body {
         font-size: 16px;
       }
+
       .header-bar {
         flex-direction: column;
-        gap: 10px;
+        text-align: center;
       }
-      .hero-about {
-        padding: 2rem 1rem;
-      }
+
       .about-intro {
-        gap: 1.5rem;
+        flex-direction: column;
       }
     }
   </style>
@@ -233,17 +256,17 @@
 <body>
   <header>
     <div class="header-container">
-      <div class='header-bar'>
-        <img src='images\logo alone.png' class='logo' alt='HYM Logo'>
+      <div class="header-bar">
+        <img src="images/logo alone.png" class="logo" alt="HYM Logo">
         <h1>HANNAH YAWSON MINISTRY</h1>
       </div>
       <nav>
-        <a href='index.html'>Home</a>
-        <a href='about.html'>About</a>
-        <a href='programs.html'>Programs</a>
-        <a href='testimonials.html'>Testimonials</a>
-        <a href='events.html'>Events</a>
-        <a href='contact.html'>Contact</a>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="programs.html">Programs</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="events.html">Events</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
@@ -256,38 +279,32 @@
   <main class="about-container">
     <section class="about-intro">
       <div class="about-img" data-aos="fade-right">
-        <img src='images\IMG_4265.AVIF' alt='Rev. Hannah Yawson'>
+        <img src="images/IMG_4265.AVIF" alt="Rev. Hannah Yawson">
       </div>
       <div class="about-text" data-aos="fade-left">
         <h2>Our Ministry Calling</h2>
-        <p>We are delighted to welcome you to Hannah Yawson Ministry (HYM), a Christian NGO, a place where compassion meets action. We are the hands and feet of Christ, bringing hope, healing, and renewal to all we encounter.</p>
-        <p>Our mission is rooted in Jesus' call to serve the vulnerable and marginalized with love, dignity, and hope. Through our ministries, we seek to bring God's light and healing to those in need, walking alongside them on their journey toward transformation.</p>
-        <p>Founded by Rev. Hannah Yawson, our ministry has grown from humble beginnings to become a beacon of hope in our community, touching thousands of lives through our various outreach programs and spiritual initiatives.</p>
+        <p>We are delighted to welcome you to Hannah Yawson Ministry (HYM), a Christian NGO. We are the hands and feet of Christ, bringing hope, healing, and renewal to all we encounter.</p>
+        <p>Our mission is rooted in Jesus' call to serve the vulnerable and marginalized with love, dignity, and hope.</p>
+        <p>Founded by Rev. Hannah Yawson, our ministry has grown from humble beginnings to become a beacon of hope in our community.</p>
         <p class="signature">- Rev. Hannah Yawson</p>
       </div>
     </section>
 
     <section class="card-section">
       <div class="about-card" data-aos="fade-up">
-        <div class="icon">
-          <i class="fas fa-cross"></i>
-        </div>
+        <div class="icon"><i class="fas fa-cross"></i></div>
         <h3>Our Spiritual Foundation</h3>
-        <p>We are built on the unchanging Word of God, committed to spreading the Gospel while meeting practical needs. Our work is prayer-driven and Spirit-led in all we undertake.</p>
+        <p>Built on God’s Word, our ministry is driven by prayer and led by the Spirit in all we do.</p>
       </div>
       <div class="about-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="icon">
-          <i class="fas fa-hands-praying"></i>
-        </div>
+        <div class="icon"><i class="fas fa-hands-praying"></i></div>
         <h3>Our Core Values</h3>
-        <p>Compassion, Integrity, Faithfulness, Excellence, and Servant Leadership guide every aspect of our ministry work and interactions with those we serve.</p>
+        <p>Compassion, Integrity, Faithfulness, Excellence, and Servant Leadership guide us.</p>
       </div>
       <div class="about-card" data-aos="fade-up" data-aos-delay="200">
-        <div class="icon">
-          <i class="fas fa-people-group"></i>
-        </div>
+        <div class="icon"><i class="fas fa-people-group"></i></div>
         <h3>Our Community Impact</h3>
-        <p>Through youth development, women's empowerment, and spiritual revival programs, we've transformed countless lives across Ghana and beyond.</p>
+        <p>Transforming lives through youth development, women’s empowerment, and revival programs.</p>
       </div>
     </section>
 
@@ -310,11 +327,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init({
-      duration: 800,
-      once: true,
-      offset: 120
-    });
+    AOS.init({ duration: 800, once: true, offset: 120 });
   </script>
 </body>
 </html>
