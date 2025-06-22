@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 <head>
-  <meta charset='UTF-8'>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gallery - Hannah Yawson Ministry</title>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" />
   <style>
     :root {
-      --primary: #4B0082; /* Deep purple */
-      --secondary: #8A2BE2; /* Violet */
-      --accent: #FFD700; /* Gold */
+      --primary: #4B0082;
+      --secondary: #8A2BE2;
+      --accent: #FFD700;
       --light: #F9F9F9;
       --text: #333333;
     }
@@ -26,75 +26,119 @@
       background: var(--primary);
       color: white;
       padding: 1.5em 0;
+      position: relative;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
     .header-container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
-    }
-    h1, h2, h3 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 600;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     h1 {
       margin: 0;
       font-size: 2rem;
       text-align: center;
     }
-    h2 {
-      font-size: 2.2rem;
-      color: var(--primary);
-      margin-bottom: 1.5rem;
-      text-align: center;
-      position: relative;
-    }
-    h2:after {
-      content: '';
-      position: absolute;
-      width: 80px;
-      height: 3px;
-      background: var(--accent);
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
     nav {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       gap: 1.5rem;
-      padding: 1rem 0 0;
+      padding-top: 1rem;
     }
     nav a {
       color: white;
       text-decoration: none;
       font-weight: 600;
-      letter-spacing: 0.5px;
       padding: 0.3rem 0.8rem;
       border-radius: 20px;
       transition: all 0.3s;
     }
     nav a:hover {
-      color: var(--accent);
       background: rgba(255,255,255,0.1);
+      color: var(--accent);
     }
     nav a.active {
       background: rgba(255,255,255,0.15);
     }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: white;
+      transition: 0.3s;
+    }
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translateY(7px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translateY(-7px);
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background: var(--primary);
+        width: 100%;
+      }
+      nav.show {
+        display: flex;
+      }
+      nav a {
+        text-align: center;
+        padding: 1rem;
+        border-top: 1px solid rgba(255,255,255,0.2);
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+
     main {
       max-width: 1400px;
       margin: 3rem auto;
       padding: 0 1.5rem;
     }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--accent);
+    }
+
     .gallery-intro {
       text-align: center;
       max-width: 700px;
       margin: 0 auto 3rem;
     }
-    .gallery-intro p {
-      font-size: 1.1rem;
-    }
+
     .gallery-filter {
       display: flex;
       justify-content: center;
@@ -102,6 +146,7 @@
       gap: 1rem;
       margin-bottom: 2rem;
     }
+
     .filter-btn {
       background: white;
       color: var(--primary);
@@ -112,36 +157,39 @@
       transition: all 0.3s;
       font-weight: 600;
     }
-    .filter-btn:hover, .filter-btn.active {
+    .filter-btn:hover,
+    .filter-btn.active {
       background: var(--primary);
       color: white;
     }
+
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 1.5rem;
     }
+
     .gallery-item {
       position: relative;
       border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       aspect-ratio: 1/1;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       transition: all 0.3s;
     }
+
     .gallery-item:hover {
       transform: translateY(-5px);
       box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     }
-    .gallery-item img, .gallery-item video {
+
+    .gallery-item img,
+    .gallery-item video {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s;
     }
-    .gallery-item:hover img, .gallery-item:hover video {
-      transform: scale(1.05);
-    }
+
     .gallery-caption {
       position: absolute;
       bottom: 0;
@@ -151,19 +199,13 @@
       color: white;
       padding: 1.5rem 1rem 1rem;
       opacity: 0;
-      transition: opacity 0.3s;
+      transition: 0.3s;
     }
+
     .gallery-item:hover .gallery-caption {
       opacity: 1;
     }
-    .gallery-caption h3 {
-      margin: 0 0 0.5rem;
-      font-size: 1.1rem;
-    }
-    .gallery-caption p {
-      margin: 0;
-      font-size: 0.9rem;
-    }
+
     .video-icon {
       position: absolute;
       top: 50%;
@@ -172,22 +214,22 @@
       color: white;
       font-size: 3rem;
       opacity: 0.8;
-      text-shadow: 0 0 10px rgba(0,0,0,0.5);
     }
+
     .section-divider {
       text-align: center;
       margin: 4rem 0 2rem;
       position: relative;
     }
+
     .section-divider h3 {
       display: inline-block;
       background: white;
       padding: 0 2rem;
-      position: relative;
-      z-index: 1;
       color: var(--primary);
     }
-    .section-divider:after {
+
+    .section-divider::after {
       content: '';
       position: absolute;
       top: 50%;
@@ -197,43 +239,45 @@
       background: var(--secondary);
       z-index: 0;
     }
+
     .testimonial-highlight {
       background: var(--primary);
       color: white;
       padding: 3rem 2rem;
-      margin: 4rem 0;
       border-radius: 12px;
       text-align: center;
+      margin: 4rem 0;
     }
+
     .testimonial-highlight blockquote {
       font-size: 1.3rem;
       font-style: italic;
       max-width: 800px;
       margin: 0 auto 1.5rem;
     }
-    .testimonial-highlight .author {
-      font-weight: 700;
-    }
+
     .cta-section {
       text-align: center;
-      margin: 3rem auto;
       max-width: 600px;
+      margin: 3rem auto;
     }
+
     .btn {
-      display: inline-block;
       background: var(--accent);
       color: var(--primary);
       padding: 0.8rem 2rem;
       border-radius: 50px;
       text-decoration: none;
       font-weight: 600;
-      transition: all 0.3s;
+      transition: 0.3s;
     }
+
     .btn:hover {
-      background: #e68a4d;
+      background: #e6b800;
       transform: translateY(-3px);
       box-shadow: 0 5px 15px rgba(244, 162, 97, 0.3);
     }
+
     footer {
       background: var(--primary);
       color: white;
@@ -241,20 +285,15 @@
       padding: 2rem 1rem;
       margin-top: 3rem;
     }
-    .social-links {
-      margin: 1rem 0;
-    }
+
     .social-links a {
       color: white;
       font-size: 1.3rem;
       margin: 0 10px;
-      transition: color 0.3s;
     }
+
     .social-links a:hover {
       color: var(--accent);
-    }
-    footer p {
-      margin: 0.5rem 0 0;
     }
 
     @media (max-width: 768px) {
@@ -271,13 +310,18 @@
   <header>
     <div class="header-container">
       <h1>Hannah Yawson Ministry</h1>
-      <nav>
-        <a href='index.html'>Home</a>
-        <a href='about.html'>About</a>
-        <a href='programs.html'>Programs</a>
-        <a href='testimonials.html'>Testimonials</a>
-        <a href='gallery.html' class='active'>Gallery</a>
-        <a href='contact.html'>Contact</a>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="programs.html">Programs</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="gallery.html" class="active">Gallery</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
@@ -288,11 +332,6 @@
       <p>Explore our gallery showcasing God's transformative work through our various ministries and outreach programs.</p>
     </div>
 
-    <!-- 
-      FILTER BUTTONS SECTION
-      Add or remove filter categories as needed based on your ministry programs
-      Each button should have a data-filter attribute matching the category
-    -->
     <div class="gallery-filter">
       <button class="filter-btn active" data-filter="all">All Ministries</button>
       <button class="filter-btn" data-filter="prisons">Prisons Ministry</button>
@@ -303,130 +342,19 @@
       <button class="filter-btn" data-filter="womens">Women's Programs</button>
     </div>
 
-    <!-- 
-      MAIN GALLERY GRID
-      To add new items:
-      1. Copy one of the gallery-item blocks below
-      2. Update the href path to your image/video file
-      3. Update the data-sub-html with caption/title
-      4. Set data-filter to appropriate category
-      5. Update the img src path
-      6. Add caption in the gallery-caption div if needed
-    -->
     <div class="gallery-grid" id="lightgallery">
-      <!-- Prisons Ministry Images -->
-      <a href="images/prisons/prison1.jpg" class="gallery-item" data-sub-html="<h3>Prison Outreach</h3><p>Sharing the gospel and hope with inmates</p>" data-filter="prisons">
-        <img src="images/prisons/prison1-thumb.jpg" alt="Prison ministry">
-        <div class="gallery-caption">
-          <h3>Prison Ministry</h3>
-          <p>Bringing hope to correctional facilities</p>
-        </div>
-      </a>
-      
-      <!-- Juvenile Aftercare Images -->
-      <a href="images/juvenile/juvenile1.jpg" class="gallery-item" data-sub-html="<h3>Youth Mentorship</h3><p>Guiding young individuals after detention</p>" data-filter="juvenile">
-        <img src="images/juvenile/juvenile1-thumb.jpg" alt="Juvenile program">
-        <div class="gallery-caption">
-          <h3>Juvenile Aftercare</h3>
-          <p>Mentoring youth for positive futures</p>
-        </div>
-      </a>
-      
-      <!-- Children of Incarcerated Mothers -->
-      <a href="images/children/children1.jpg" class="gallery-item" data-sub-html="<h3>Children's Support</h3><p>Providing stability for affected children</p>" data-filter="children">
-        <img src="images/children/children1-thumb.jpg" alt="Children's program">
-        <div class="gallery-caption">
-          <h3>Children's Ministry</h3>
-          <p>Supporting kids with incarcerated parents</p>
-        </div>
-      </a>
-      
-      <!-- Hospital Ministry -->
-      <a href="images/hospital/hospital1.jpg" class="gallery-item" data-sub-html="<h3>Hospital Visits</h3><p>Praying with patients and families</p>" data-filter="hospital">
-        <img src="images/hospital/hospital1-thumb.jpg" alt="Hospital ministry">
-        <div class="gallery-caption">
-          <h3>Hospital Ministry</h3>
-          <p>Bringing God's comfort to patients</p>
-        </div>
-      </a>
-      
-      <!-- Revival Services -->
-      <a href="images/revival/revival1.jpg" class="gallery-item" data-sub-html="<h3>Revival Service</h3><p>Powerful worship and deliverance</p>" data-filter="revival">
-        <img src="images/revival/revival1-thumb.jpg" alt="Revival service">
-        <div class="gallery-caption">
-          <h3>Revival Gathering</h3>
-          <p>Transformative spiritual encounters</p>
-        </div>
-      </a>
-      
-      <!-- Women's Programs -->
-      <a href="images/womens/women1.jpg" class="gallery-item" data-sub-html="<h3>Women's Conference</h3><p>Empowering women through Christ</p>" data-filter="womens">
-        <img src="images/womens/women1-thumb.jpg" alt="Women's program">
-        <div class="gallery-caption">
-          <h3>Women's Ministry</h3>
-          <p>Building up women in faith</p>
-        </div>
-      </a>
-      
-      <!-- 
-        VIDEO CONTENT EXAMPLE
-        To add videos:
-        1. Use this structure but replace with your video files
-        2. For YouTube/Vimeo, you would use their embed codes instead
-      -->
-      <a href="videos/prison-testimony.mp4" class="gallery-item" data-sub-html="<h3>Transformed Life</h3><p>Powerful testimony from prison ministry</p>" data-filter="prisons">
-        <video muted loop>
-          <source src="videos/prison-testimony-preview.mp4" type="video/mp4">
-        </video>
-        <div class="video-icon">
-          <i class="fas fa-play"></i>
-        </div>
-        <div class="gallery-caption">
-          <h3>Inmate Testimony</h3>
-          <p>Click to play video</p>
-        </div>
-      </a>
-      
-      <!-- Add more gallery items following the same pattern -->
-      <!-- 
-        EXAMPLE ADDITIONAL ITEM (copy and modify this)
-        <a href="PATH_TO_LARGE_IMAGE" class="gallery-item" data-sub-html="<h3>IMAGE_TITLE</h3><p>IMAGE_DESCRIPTION</p>" data-filter="CATEGORY">
-          <img src="PATH_TO_THUMBNAIL" alt="ALT_TEXT">
-          <div class="gallery-caption">
-            <h3>DISPLAY_TITLE</h3>
-            <p>DISPLAY_DESCRIPTION</p>
-          </div>
-        </a>
-      -->
+      <!-- Add gallery items here -->
     </div>
 
-    <!-- 
-      SECTION DIVIDER FOR SPECIAL GALLERIES
-      You can add more sections like this for specific types of content
-    -->
-    <div class="section-divider">
-      <h3>Transformation Stories</h3>
-    </div>
+    <div class="section-divider"><h3>Transformation Stories</h3></div>
 
-    <!-- 
-      TESTIMONY GALLERY SECTION
-      This can showcase before/after stories or powerful testimonies
-    -->
     <div class="gallery-grid">
-      <a href="images/transformations/testimony1.jpg" class="gallery-item" data-sub-html="<h3>John's Redemption Story</h3><p>From inmate to ministry leader</p>">
-        <img src="images/transformations/testimony1-thumb.jpg" alt="Transformation story">
-        <div class="gallery-caption">
-          <h3>Redemption Story</h3>
-          <p>Click to view full testimony</p>
-        </div>
-      </a>
-      
-      <!-- Add more transformation stories here -->
+      <!-- Add transformation items here -->
     </div>
 
     <div class="testimonial-highlight">
       <blockquote>"Through HYM's prison ministry, I encountered Christ in my darkest hour. Today I'm a changed man, serving others with the same hope that transformed me."</blockquote>
-      <div class="author">- Kwame Mensah, Prison Ministry Graduate</div>
+      <div class="author">– Kwame Mensah, Prison Ministry Graduate</div>
     </div>
 
     <div class="cta-section">
@@ -446,36 +374,25 @@
     <p>&copy; 2025 Hannah Yawson Ministry. All Rights Reserved.</p>
   </footer>
 
-  <!-- 
-    LIGHTGALLERY JS FOR IMAGE/VIDEO LIGHTBOX
-    No need to modify this unless you want advanced customization
-  -->
   <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/fullscreen/lg-fullscreen.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/video/lg-video.min.js"></script>
+
   <script>
-    // Initialize lightGallery with all plugins
     lightGallery(document.getElementById('lightgallery'), {
       plugins: [lgZoom, lgFullscreen, lgVideo],
       speed: 500,
       download: false,
-      zoomFromOrigin: false
     });
 
-    // Filter functionality
     const filterButtons = document.querySelectorAll('.filter-btn');
     const galleryItems = document.querySelectorAll('.gallery-item');
-
     filterButtons.forEach(button => {
       button.addEventListener('click', () => {
-        // Update active button
         filterButtons.forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
-
         const filterValue = button.getAttribute('data-filter');
-
-        // Filter items
         galleryItems.forEach(item => {
           if (filterValue === 'all' || item.getAttribute('data-filter') === filterValue) {
             item.style.display = 'block';
@@ -484,6 +401,13 @@
           }
         });
       });
+    });
+
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('show');
     });
   </script>
 </body>
