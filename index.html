@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta charset='UTF-8'>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
   <meta name="description" content="Hannah Yawson Ministry - Empowering youth, women, and communities through spiritual guidance and leadership development">
   <title>HANNAH YAWSON MINISTRY (HYM) | Spiritual Empowerment</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,641 +12,164 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
   <style>
     :root {
-      --primary: #4B0082; /* Deep purple for spirituality */
-      --primary-light: #6A3093;
-      --secondary: #FFD700; /* Gold for divinity */
-      --accent: #8A2BE2; /* Violet accent */
+      --primary: #4B0082;
+      --secondary: #FFD700;
       --light: #f9f9f9;
       --dark: #333;
       --gray: #e0e0e0;
       --transition: all 0.3s ease;
     }
-    
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin: 0; padding: 0; box-sizing: border-box;
     }
-    
     body {
       font-family: 'Raleway', sans-serif;
-      line-height: 1.6;
-      color: var(--dark);
       background: var(--light);
-      overflow-x: hidden;
+      color: var(--dark);
     }
-    
-    h1, h2, h3 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 600;
-      line-height: 1.2;
-    }
-    
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-    
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    
-    /* Header */
     header {
       background: var(--primary);
       color: white;
-      padding: 1rem 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
-    
-    .header-container {
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
     }
-    
     .logo-container {
       display: flex;
       align-items: center;
       gap: 15px;
     }
-    
     .logo-img {
-      width: 50px;
-      height: 50px;
+      width: 50px; height: 50px;
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid var(--secondary);
     }
-    
     .logo-text {
-      font-size: 1.5rem;
-      font-weight: 700;
+      font-size: 1.5rem; font-weight: 700;
     }
-    
     nav {
       display: flex;
       gap: 1.5rem;
     }
-    
     nav a {
+      color: white;
       font-weight: 500;
-      padding: 0.5rem 0;
       position: relative;
-      transition: var(--transition);
     }
-    
     nav a:after {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
+      bottom: -5px; left: 0;
+      width: 0; height: 2px;
       background: var(--secondary);
       transition: var(--transition);
     }
-    
     nav a:hover:after {
       width: 100%;
     }
-    
     nav a:hover {
       color: var(--secondary);
     }
-    
-    /* Hero Section */
-    .hero {
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-      text-align: center;
-      background: 
-        linear-gradient(rgba(75,0,130,0.85), rgba(75,0,130,0.85)), 
-        url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+    .nav-toggle {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
       color: white;
-      padding: 4rem 2rem;
-      position: relative;
     }
-    
-    .hero-content {
-      max-width: 800px;
-      margin: 0 auto;
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: block;
+        position: absolute;
+        top: 20px; right: 20px;
+      }
+      nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: var(--primary);
+        text-align: center;
+        padding-top: 3rem;
+      }
+      nav.show {
+        display: flex;
+      }
+      nav a {
+        padding: 1rem;
+        border-top: 1px solid rgba(255,255,255,0.1);
+      }
     }
-    
+    .hero {
+      background: linear-gradient(rgba(75,0,130,0.85), rgba(75,0,130,0.85)), url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 6rem 2rem;
+    }
     .hero h2 {
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
-      margin-bottom: 1.5rem;
-      animation: fadeInDown 1s ease;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
     }
-    
     .hero p {
-      font-size: clamp(1rem, 2.5vw, 1.3rem);
-      margin-bottom: 2.5rem;
-      animation: fadeIn 1.5s ease;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
     }
-    
     .btn {
-      display: inline-block;
       background: var(--secondary);
       color: var(--primary);
-      padding: 0.8rem 2.2rem;
-      font-size: 1.1rem;
+      padding: 0.7rem 1.8rem;
+      border-radius: 30px;
       font-weight: 600;
-      border-radius: 50px;
       border: none;
       cursor: pointer;
       transition: var(--transition);
-      animation: fadeInUp 1s ease;
     }
-    
     .btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-      background: linear-gradient(45deg, var(--secondary), #FFA500);
-    }
-    
-    .btn-outline {
-      background: transparent;
-      border: 2px solid white;
-      color: white;
-      margin-left: 1rem;
-    }
-    
-    .btn-outline:hover {
-      background: white;
-      color: var(--primary);
-    }
-    
-    /* Pillars Section */
-    .pillars {
-      padding: 5rem 0;
-      background: white;
-    }
-    
-    .section-title {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-    
-    .section-title h2 {
-      font-size: 2.2rem;
-      color: var(--primary);
-      margin-bottom: 1rem;
-    }
-    
-    .section-title p {
-      color: #666;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    
-    .pillar {
-      background: white;
-      padding: 2.5rem 2rem;
-      border-radius: 10px;
-      text-align: center;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: var(--transition);
-      border: 1px solid var(--gray);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .pillar:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-      border-color: var(--primary-light);
-    }
-    
-    .pillar-image {
-      height: 200px;
-      overflow: hidden;
-      margin-bottom: 1.5rem;
-      border-radius: 8px;
-    }
-    
-    .pillar-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: var(--transition);
-    }
-    
-    .pillar:hover .pillar-image img {
-      transform: scale(1.05);
-    }
-    
-    .pillar i {
-      font-size: 2.5rem;
-      color: var(--secondary);
-      margin-bottom: 1.5rem;
-    }
-    
-    .pillar h3 {
-      font-size: 1.4rem;
-      margin-bottom: 1rem;
-      color: var(--primary);
-    }
-    
-    /* Ministry Showcase */
-    .ministry-showcase {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-    }
-    
-    .ministry-image {
-      height: 300px;
-      overflow: hidden;
-      position: relative;
-    }
-    
-    .ministry-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: var(--transition);
-    }
-    
-    .ministry-image:hover img {
-      transform: scale(1.05);
-    }
-    
-    .image-label {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(75,0,130,0.8);
-      color: white;
-      padding: 1rem;
-      text-align: center;
-      font-weight: 600;
-    }
-    
-    /* Testimonials */
-    .testimonials {
-      padding: 5rem 0;
-      background: #f5f5f5;
-    }
-    
-    .testimonial-card {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      max-width: 500px;
-      margin: 0 auto;
-    }
-    
-    .testimonial-text {
-      font-style: italic;
-      margin-bottom: 1.5rem;
-      position: relative;
-    }
-    
-    .testimonial-text:before,
-    .testimonial-text:after {
-      content: '"';
-      font-size: 3rem;
-      color: var(--gray);
-      position: absolute;
-    }
-    
-    .testimonial-text:before {
-      top: -1rem;
-      left: -1.5rem;
-    }
-    
-    .testimonial-text:after {
-      bottom: -2.5rem;
-      right: -1rem;
-    }
-    
-    .testimonial-author {
-      font-weight: 600;
-      color: var(--primary);
-    }
-    
-    /* CTA Section */
-    .cta {
-      padding: 5rem 0;
-      text-align: center;
-      background: var(--primary);
-      color: white;
-    }
-    
-    .cta h2 {
-      margin-bottom: 1.5rem;
-    }
-    
-    .cta p {
-      max-width: 700px;
-      margin: 0 auto 2rem;
-    }
-    
-    /* Footer */
-    footer {
-      background: var(--primary);
-      color: white;
-      padding: 3rem 0 1.5rem;
-      text-align: center;
-    }
-    
-    .footer-content {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      margin-bottom: 2rem;
-    }
-    
-    .footer-column {
-      flex: 1;
-      min-width: 250px;
-      margin-bottom: 1.5rem;
-    }
-    
-    .footer-column h3 {
-      margin-bottom: 1.5rem;
-      font-size: 1.3rem;
-    }
-    
-    .footer-links {
-      list-style: none;
-    }
-    
-    .footer-links li {
-      margin-bottom: 0.8rem;
-    }
-    
-    .footer-links a {
-      transition: var(--transition);
-    }
-    
-    .footer-links a:hover {
-      color: var(--secondary);
-    }
-    
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 1rem;
-    }
-    
-    .social-links a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 50%;
-      transition: var(--transition);
-    }
-    
-    .social-links a:hover {
-      background: var(--secondary);
-      color: var(--primary);
-      transform: translateY(-3px);
-    }
-    
-    .copyright {
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
-    }
-    
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-      .header-container {
-        flex-direction: column;
-      }
-      
-      .logo-container {
-        margin-bottom: 1rem;
-      }
-      
-      nav {
-        margin-top: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      
-      .hero {
-        min-height: auto;
-        padding: 6rem 1rem;
-      }
-      
-      .btn-outline {
-        margin-left: 0;
-        margin-top: 1rem;
-        display: block;
-      }
-      
-      .ministry-showcase {
-        grid-template-columns: 1fr;
-      }
     }
   </style>
 </head>
 <body>
-  <header data-aos="fade-down">
-    <div class="container header-container">
+  <header>
+    <div class="container">
       <div class="logo-container">
-        <img src="images\logo alone.png" alt="Hannah Yawson Ministry Logo" class="logo-img">
+        <img src="images/logo alone.png" alt="Hannah Yawson Ministry Logo" class="logo-img">
         <div class="logo-text">HANNAH YAWSON MINISTRY (HYM)</div>
       </div>
-      <nav>
-        <a href='index.html'>Home</a>
-        <a href='about.html'>About</a>
-        <a href='programs.html'>Programs</a>
-        <a href='testimonials.html'>Testimonials</a>
-        <a href='blog.html'>Blog</a>
-        <a href='contact.html'>Contact</a>
+      <div class="nav-toggle" onclick="toggleMenu()">☰</div>
+      <nav id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="programs.html">Programs</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
-  
-  <main>
-    <section class="hero" data-aos="fade">
-      <div class="hero-content">
-        <h2>Empowering Generations Through Faith</h2>
-        <p>Transforming lives through spiritual guidance, leadership development, and community empowerment</p>
-        <div>
-          <button class="btn" onclick="location.href='contact.html';">Join Our Ministry</button>
-          <button class="btn btn-outline" onclick="location.href='services.html';">Our Programs</button>
-        </div>
-      </div>
-    </section>
 
-    <section class="pillars">
-      <div class="container">
-        <div class="section-title" data-aos="fade-up">
-          <h2>Our Ministry Pillars</h2>
-          <p>We are committed to these three foundational areas of transformation</p>
-        </div>
-        
-        <div class="pillars-grid">
-          <div class="pillar" data-aos="fade-up">
-            <div class="pillar-image">
-              <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Youth Development">
-            </div>
-            <i class="fas fa-hands-helping"></i>
-            <h3>Youth & Leadership Development</h3>
-            <p>Equipping the next generation with spiritual wisdom, leadership skills, and moral foundations to transform their communities.</p>
-          </div>
-          
-          <div class="pillar" data-aos="fade-up" data-aos-delay="100">
-            <div class="pillar-image">
-              <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Community Empowerment">
-            </div>
-            <i class="fas fa-users"></i>
-            <h3>Community & Women Empowerment</h3>
-            <p>Strengthening communities through spiritual and practical support, with special focus on uplifting women.</p>
-          </div>
-          
-          <div class="pillar" data-aos="fade-up" data-aos-delay="200">
-            <div class="pillar-image">
-              <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Spiritual Guidance">
-            </div>
-            <i class="fas fa-pray"></i>
-            <h3>Revivals & Spiritual Guidance</h3>
-            <p>Facilitating spiritual awakening, healing, and deep connection with God through powerful revival meetings.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <section class="ministry-showcase">
-      <div class="ministry-image" data-aos="zoom-in">
-        <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Youth Conference">
-        <div class="image-label">Youth Leadership Conferences</div>
-      </div>
-      <div class="ministry-image" data-aos="zoom-in" data-aos-delay="100">
-        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Women's Program">
-        <div class="image-label">Women's Empowerment Programs</div>
-      </div>
-      <div class="ministry-image" data-aos="zoom-in" data-aos-delay="200">
-        <img src="https://images.unsplash.com/photo-1542272201-b1ca555f8505?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Revival Service">
-        <div class="image-label">Spiritual Revival Services</div>
-      </div>
-    </section>
-    
-    <section class="testimonials">
-      <div class="container">
-        <div class="section-title" data-aos="fade-up">
-          <h2>Transformed Lives</h2>
-          <p>Hear from those whose lives have been changed through our ministry</p>
-        </div>
-        
-        <div class="testimonial-card" data-aos="zoom-in">
-          <div class="testimonial-text">
-            The youth leadership program completely transformed my perspective. I went from being directionless to leading a community outreach initiative that has helped dozens of families.
-          </div>
-          <div class="testimonial-author">— Kwame A., Youth Program Participant</div>
-        </div>
-      </div>
-    </section>
-    
-    <section class="cta" data-aos="fade-up">
-      <div class="container">
-        <h2>Ready to Experience Transformation?</h2>
-        <p>Connect with us to learn more about our programs and upcoming events.</p>
-        <button class="btn" onclick="location.href='contact.html';">Contact Us Today</button>
-      </div>
-    </section>
-  </main>
-  
-  <footer>
+  <section class="hero">
     <div class="container">
-      <div class="footer-content">
-        <div class="footer-column">
-          <h3>HANNAH YAWSON MINISTRY</h3>
-          <p>Empowering generations through spiritual guidance and community development.</p>
-        </div>
-        
-        <div class="footer-column">
-          <h3>Quick Links</h3>
-          <ul class="footer-links">
-            <li><a href="about.html">About Our Ministry</a></li>
-            <li><a href="services.html">Our Programs</a></li>
-            <li><a href="testimonials.html">Life Transformations</a></li>
-            <li><a href="blog.html">Spiritual Blog</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-column">
-          <h3>Contact</h3>
-          <ul class="footer-links">
-            <li><a href="mailto:info@hannahyawsonministry.org"> info@hyministry.org</a></li>
-            <li><a href="tel:   (+233)053-987-1778">   (+233)053-987-1778</a></li>
-            <li><a href="tel:    (+233)026-443-0204">    (+233)026-443-0204</a></li>
-            <li>W185CorollaStreet,Anyaa, Accra,Ghana</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="social-links">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-      </div>
-      
-      <div class="copyright">
-        <p>&copy; 2025 HANNAH YAWSON MINISTRY (HYM). All rights reserved.</p>
-      </div>
+      <h2>Empowering Generations Through Faith</h2>
+      <p>Transforming lives through spiritual guidance, leadership development, and community empowerment.</p>
+      <button class="btn" onclick="location.href='contact.html'">Join Our Ministry</button>
     </div>
-  </footer>
-  
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  </section>
+
   <script>
-    AOS.init({
-      duration: 800,
-      once: true
-    });
+    function toggleMenu() {
+      const nav = document.getElementById("navMenu");
+      nav.classList.toggle("show");
+    }
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ duration: 800, once: true });</script>
 </body>
 </html>
