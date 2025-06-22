@@ -78,3 +78,13 @@ footer {
     width: 100px; /* Adjust for smaller screens */
   }
 }
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+  }
+
+  .hero-text {
+    font-size: 1.2rem;
+  }
+}
+
